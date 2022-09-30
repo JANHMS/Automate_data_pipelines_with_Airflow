@@ -28,9 +28,6 @@ In the DAG, add default parameters according to these guidelines
 3. Retries happen every 5 minutes
 4. Catchup is turned off
 
-In addition, configure the task dependencies so that after the dependencies are set, the graph view follows the flow shown in the image below.
-
-![DAG!](./image/image_pipeline.PNG "image_pipeline")
 
 **Configure the task dependencies**
 ```
