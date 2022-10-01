@@ -46,20 +46,14 @@ start_operator  \
 >- The **operators** folder includes 4 user defined operators  that will stage the data, transform the data, fill the data warehouse, and run checks on data quality. <br>
 >- A **helper** class for the SQL transformations
 
-## Building the operators
+## How to run
 
-### Stage Operator
-<p>The stage operator is expected to be able to load any JSON formatted files from S3 to Amazon Redshift. The operator creates and runs a SQL COPY statement based on the parameters provided. The operator's parameters should specify where in S3 the file is loaded and what is the target table.</p>
+1. Add your AWS creedentials
+2. Run the python script `python create_tables.py`
+3. Execute the Dag within Airflow. 
 
-<p>The parameters should be used to distinguish between JSON file. Another important requirement of the stage operator is containing a templated field that allows it to load timestamped files from S3 based on the execution time and run backfills.</p>
+Below is shown how to add the AWS Redshift and AWS IAM user credentials to the Airflow instance, so that the DAG can execute successfully. 
 
-### Fact and Dimension Operators
-<p>With dimension and fact operators, you can utilize the provided SQL helper class to run data transformations. Most of the logic is within the SQL transformations and the operator is expected to take as input a SQL statement and target database on which to run the query against. You can also define a target table that will contain the results of the transformation.</p>
-
-<p>Dimension loads are often done with the truncate-insert pattern where the target table is emptied before the load. Thus, you could also have a parameter that allows switching between insert modes when loading dimensions. Fact tables are usually so massive that they should only allow append type functionality.</p>
-
-### Data Quality Operator
-<p>The final operator to create is the data quality operator, which is used to run checks on the data itself. The operator's main functionality is to receive one or more SQL based test cases along with the expected results and execute the tests. For each the test, the test result and expected result needs to be checked and if there is no match, the operator should raise an exception and the task should retry and fail eventually.</p>
 
 ## Add Airflow Connections to AWS
 
