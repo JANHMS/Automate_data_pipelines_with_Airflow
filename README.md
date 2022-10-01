@@ -8,6 +8,10 @@
 
 <p>The source data resides in S3 and needs to be processed in Sparkify's data warehouse in Amazon Redshift. The source datasets consist of JSON logs that tell about user activity in the application and JSON metadata about the songs the users listen to.</p>
 
+## How the pipeline looks:
+
+![DAG pipeline!](./image/image_pipeline.png "DAG pipeline")
+
 ## Datasets
 
 For this project, there are two datasets. Here are the s3 links for each:
